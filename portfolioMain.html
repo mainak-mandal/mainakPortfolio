@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/7867/7867852.png" type="image/x-icon">
+    <style>
+        body, html {
+            scroll-behavior: smooth;
+            font-family: 'Arial', sans-serif;
+        }
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            opacity: 0.5;
+            filter: brightness(0.6);
+        }
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+        }
+        .social-icon {
+            transition: transform 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-10px);
+        }
+        .project-details {
+            display: none;
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .back-video{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        @media (min-aspect-ratio: 16/9){
+            .back-video{
+            width: 100%;
+            height: auto;
+            }
+        }
+        
+        @media (max-aspect-ratio: 16/9){
+            .back-video{
+            width: auto;
+            height: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <video autoplay loop muted plays-inline class="back-video">
+        <source src="video.webm" type="video/webm">
+    </video>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black bg-opacity-50 z-50">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="text-2xl font-bold">Personal Portfolio</div>
+            <div class="space-x-6">
+                <a href="#home" class="nav-link hover:text-blue-300 transition">Home</a>
+                <a href="#about" class="nav-link hover:text-blue-300 transition">About</a>
+                <a href="#projects" class="nav-link hover:text-blue-300 transition">Projects</a>
+                <a href="#skills" class="nav-link hover:text-blue-300 transition">Skills</a>
+                <a href="#contact" class="nav-link hover:text-blue-300 transition">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section">
+        <div class="text-center glass-card p-10">
+            <img src="profile.jpg" alt="Profile" class="mx-auto rounded-full w-48 h-48 mb-6 border-4 border-blue-500">
+            <h1 class="text-4xl font-bold mb-4">Mainak Mandal</h1>
+            <p class="text-xl mb-6">B.Tech in Computer Science Engineering (AI/ML) | Passionate AI/ML Enthusiast</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://github.com/mainak-mandal" target="_blank" class="social-icon text-3xl hover:text-blue-300">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mainak-mandal-404ab628a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon text-3xl hover:text-blue-300">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/ing_daedalus/" target="_blank" class="social-icon text-3xl hover:text-blue-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container mx-auto glass-card p-10 max-w-2xl">
+            <h2 class="text-3xl font-bold mb-6 text-center">About Me</h2>
+            <p class="text-lg text-center">
+                A B.Tech student specializing in Artificial Intelligence and Machine Learning, 
+                I am driven by a passion for transforming complex challenges through cutting-edge technology. 
+                My expertise spans Python, Java, and machine learning frameworks like TensorFlow and Keras, 
+                with a focus on developing innovative AI solutions.<br><br>
+                As a project lead in the Introduction to Engineering(IoE) project, I've demonstrated strong collaborative 
+                skills and interdisciplinary problem-solving. My goal is to make meaningful contributions in 
+                MLOps, AI product management, or design roles that leverage advanced machine learning concepts.
+            </p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-10 text-center">Projects</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-4">INR Note Detection CNN model</h3>
+                    <p class="mb-4">Computer Vision project for the visually challenged to make smoother transactions.</p>
+                    <button onclick="toggleProjectDetails(this)" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-full">
+                        View Details
+                    </button>
+                    <div class="project-details text-left">
+                        <ul class="list-disc list-inside">
+                            <li>Developed using Python, YOLO and OpenCV</li>
+                            <li>Implemented YOLOv8n model</li>
+                            <li>Achieved 85% accuracy in Note Detection</li>
+                            <li>Uses an augmented dataset of over 6000 labeled images</li>
+                            <li>Real time frame-by-frame input analysis and output generation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="glass-card p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-4">Pandemic Escalation Predictor</h3>
+                    <p class="mb-4">Machine Learning Model for Predicting Viral Transmission During Pandemics.</p>
+                    <button onclick="toggleProjectDetails(this)" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-full">
+                        View Details
+                    </button>
+                    <div class="project-details text-left">
+                        <ul class="list-disc list-inside">
+                            <li>Used Python, Pandas and Scikit-learn</li>
+                            <li>Implemented Regression Algorithm</li>
+                            <li>Created GUI for data entry and to display prediction results</li>
+                            <li>Validated with real-world trends</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="glass-card p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-4">Farmers' Assistance Model</h3>
+                    <p class="mb-4">Innovative solution using machine learning algorithms to assist farmers during unprecedented weather conditions.</p>
+                    <button onclick="toggleProjectDetails(this)" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-full">
+                        View Details
+                    </button>
+                    <div class="project-details text-left">
+                        <ul class="list-disc list-inside">
+                            <li>Integrated Weather forecast model</li>
+                            <li>Integrated model to suggest best crop for upcoming weather</li>
+                            <li>Deployed using Android Studio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Hard Skills Section -->
+    <section id="skills" class="section">
+        <div class="container mx-auto glass-card p-10">
+            <h2 class="text-3xl font-bold mb-10 text-center">Technical Skills</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Programming</h3>
+                    <p>Python, Java, C++, JavaScript, HTML, CSS</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">AI/ML Frameworks</h3>
+                    <p>TensorFlow, Ultralytics, OpenCV, Scikit-learn, Keras</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Data Science</h3>
+                    <p>Pandas, NumPy, Matplotlib, Seaborn, MySQL, Firebase</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Tools</h3>
+                    <p>GitHub, Jupyter, VS Code</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Coursework</h3>
+                    <p>DSA, DBMS, OS, OOPS, AI, Automata Theory</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!--Soft Skills Section -->
+    <section id="softSkills" class="section">
+        <div class="container mx-auto glass-card p-10">
+            <h2 class="text-3xl font-bold mb-10 text-center">Soft Skills</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Communication Skills</h3>
+                    <p>Verbal and Writted, Report Writing, Active Listening, Public Speaking, Presentation</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Problem Solving and Critical Thinking</h3>
+                    <p>Analytical Thinking, Creativity and Innovation, Decision-Making, Logical Reasoning</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Teamwork and Collaboration</h3>
+                    <p>Interpersonal Skills, Conflict Resolution, Adaptability in Team Environments, Leadership and Delegation</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Time Management and Organization</h3>
+                    <p>Prioritization and Task Management, Meeting Deadlines, Multitasking, Goal Setting</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Adaptability and Continuous Learning</h3>
+                    <p>Learning New Technologies, Handling Uncertainty and Change, Open-Mindedness, Resilience</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Ethical and Professional Conduct</h3>
+                    <p>Integrity and Accountability, Workplace Ethics, Responsibility in Engineering Decisions, Sustainability Awareness</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Leadership and Decision-Making</h3>
+                    <p>Taking Initiative, Inspiring and Motivating Teams, Strategic Thinking, Negotiation Skills</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="qualification" class="section">
+        <div class="container mx-auto glass-card p-10">
+            <h2 class="text-3xl font-bold mb-10 text-center">Educational Qualifications & Academic/Non-Academic Achievements</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Undergraduate</h3>
+                    <ul>
+                        <li>B Tech in CSE(AI/ML Specialization)<li>
+                        <li>VIT-Chennai Campus</li>
+                        <li>Passout Year: 2027</li>
+                        <li>Placed 8th in branch</li>
+                        <li>Placed 2nd in 6-hour Idea-thon event</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Higher Secondary</h3>
+                    <ul>
+                        <li>Score: 91.4%<li>
+                        <li>Board: CBSE</li>
+                        <li>Passout Year: 2022</li>
+                        <li>Passout Institution: Kendriya Vidyalaya</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Matriculation</h3>
+                    <ul>
+                        <li>Score: 94.8%<li>
+                        <li>Board: CBSE</li>
+                        <li>Passing Year: 2020</li>
+                        <li>Passing Institution: Kendriya Vidyalaya</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container mx-auto glass-card p-10 max-w-lg">
+            <h2 class="text-3xl font-bold mb-10 text-center">Contact Me</h2>
+            <form id="contactForm" class="space-y-4">
+                <input type="text" placeholder="Name" required class="w-full p-3 bg-gray-800 rounded-lg">
+                <input type="email" placeholder="Email" required class="w-full p-3 bg-gray-800 rounded-lg">
+                <textarea placeholder="Message" required class="w-full p-3 bg-gray-800 rounded-lg h-32"></textarea>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded-lg transition">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <a href="mailto:your.email@example.com" class="hover:text-blue-300">mainak.mandal2023@vitstudent.ac.in</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>+91 8403829621</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span><a href="https://maps.app.goo.gl/bdVjwKrbZQ36Hghb7">VIT-Chennai Campus, Tamil Nadu, India</a></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4" style="padding-left: 20%;">Quick Links</h3>
+                    <ul class="space-y-2" style="padding-left: 20%;">
+                        <li><a href="#home" class="hover:text-blue-300">Home</a></li>
+                        <li><a href="#about" class="hover:text-blue-300">About</a></li>
+                        <li><a href="#projects" class="hover:text-blue-300">Projects</a></li>
+                        <li><a href="#skills" class="hover:text-blue-300">Skills</a></li>
+                        <li><a href="#contact" class="hover:text-blue-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Professional Interests -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Interests</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">Machine Learning</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">AI Research</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">Data Science</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">Deep Learning</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">Neural Networks</span>
+                    </div>
+                </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for all navigation links
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Function to toggle project details
+        function toggleProjectDetails(button) {
+            const detailsDiv = button.nextElementSibling;
+            if (detailsDiv.style.display === 'block') {
+                detailsDiv.style.display = 'none';
+            } else {
+                detailsDiv.style.display = 'block';
+            }
+        }
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
